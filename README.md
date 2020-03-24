@@ -1,2 +1,2 @@
-# ClubManagementSystem
+# ClubMemberManagementSystem
 oop at gnu
