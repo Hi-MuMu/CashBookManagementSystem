@@ -13,7 +13,7 @@ public class MuneManager {
 			System.out.println(" 4. View Cash Book");
 			System.out.println(" 5. Show a menu");
 			System.out.println(" 6. Exit");
-			System.out.println("Select one number between 1 - 5 :");
+			System.out.println("Select one number between 1 - 6 :");
 			num = input.nextInt();
 			if (num==1) {
 				addcashbook();
