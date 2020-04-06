@@ -1,4 +1,3 @@
-
 public class CashBook {
 	String[] date = new String[100];
 	int[] incomings = new int[100];
