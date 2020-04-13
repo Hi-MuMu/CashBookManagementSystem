@@ -2,13 +2,16 @@ public class CashBook {
 	String date;
 	int in;
 	int out;
-	int total;	
+	int total;
+	static int numCashBookDateRegistered = 0;
 	
 	public CashBook() {
+		numCashBookDateRegistered++;
 	}
 	
 	public CashBook(String date) {
 		this.date = date;
+		numCashBookDateRegistered++;
 	}
 	
 	public CashBook(String date, int in, int out, int total) {
