@@ -1,17 +1,59 @@
+package cashbook;
+
+import java.util.Scanner;
+
 public class CashBook {
-	String date;
-	int in;
-	int out;
-	int total;
-	static int numCashBookDateRegistered = 0;
+	protected CashBookKind kind = CashBookKind.January;
+	protected String date;
+	protected int in;
+	protected int out;
+	protected int total;
+	
+	public CashBookKind getKind() {
+		return kind;
+	}
+
+	public void setKind(CashBookKind kind) {
+		this.kind = kind;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public int getIn() {
+		return in;
+	}
+
+	public void setIn(int in) {
+		this.in = in;
+	}
+
+	public int getOut() {
+		return out;
+	}
+
+	public void setOut(int out) {
+		this.out = out;
+	}
+
+	public int getTotal() {
+		return total;
+	}
+
+	public void setTotal(int total) {
+		this.total = total;
+	}
 	
 	public CashBook() {
-		numCashBookDateRegistered++;
 	}
 	
 	public CashBook(String date) {
 		this.date = date;
-		numCashBookDateRegistered++;
 	}
 	
 	public CashBook(String date, int in, int out, int total) {
@@ -20,10 +62,32 @@ public class CashBook {
 		this.out = out;
 		this.total = total;
 	}
+	
 	public void printInfo() {
-		System.out.println("ë‚ ì§œëŠ” :" + date);
-		System.out.println("ìˆ˜ì…ì€ :" + in);
-		System.out.println("ì§€ì¶œì€ :" + out);
-		System.out.println("ì´í•©ì€ :" + total);
+		System.out.println("³¯Â¥´Â :" + date);
+		System.out.println("¼öÀÔÀº :" + in);
+		System.out.println("ÁöÃâÀº :" + out);
+		System.out.println("ÃÑÇÕÀº :" + total);
+	}
+	
+	public void getUserInput(Scanner input) {
+		System.out.println("ÀÌ¹ø´ŞÀº 31ÀÏ ±îÁö ÀÖ½À´Ï´Ù.");
+		
+		System.out.println("³¯Â¥¸¦ ÀÔ·ÂÇÏ¼¼¿ä :");
+		String date = input.next();
+		this.setDate(date);
+		
+		System.out.println("¼öÀÔÀ» ÀÔ·ÂÇÏ¼¼¿ä :");
+		int in = input.nextInt();
+		this.setIn(in);
+		
+		System.out.println("ÁöÃâÀ» ÀÔ·ÂÇÏ¼¼¿ä :");
+		int out = input.nextInt();
+		this.setOut(out);
+		
+		int total = in - out;
+		System.out.println("ÃÑÇÕÀº : " + total);
+		this.setTotal(total);
 	}
 }
+	
