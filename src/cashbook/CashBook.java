@@ -68,10 +68,11 @@ public class CashBook {
 		System.out.println("수입은 :" + in);
 		System.out.println("지출은 :" + out);
 		System.out.println("총합은 :" + total);
+		System.out.println();
 	}
 	
 	public void getUserInput(Scanner input) {
-		System.out.println("이번달은 31일 까지 있습니다.");
+		System.out.println("이번달은 1월이고 31일 까지 있습니다.");
 		
 		System.out.println("날짜를 입력하세요 :");
 		String date = input.next();
@@ -86,7 +87,7 @@ public class CashBook {
 		this.setOut(out);
 		
 		int total = in - out;
-		System.out.println("총합은 : " + total);
+		System.out.println("수입 - 지출은 : " + total);
 		this.setTotal(total);
 	}
 }

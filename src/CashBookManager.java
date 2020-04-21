@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class CashBookManager {
 	ArrayList<CashBook> cashbooks = new ArrayList<CashBook>();
+	int x = 0;
 	Scanner input;
 	CashBookManager(Scanner input) {
 		this.input = input;
@@ -24,12 +25,14 @@ public class CashBookManager {
 				cashbook = new CashBook();
 				cashbook.getUserInput(input);
 				cashbooks.add(cashbook);
+				x = x + cashbook.getTotal();
 				break;
 			}
 			else if (kind == 2) {
 				cashbook = new FebruaryCashBook();
 				cashbook.getUserInput(input);
 				cashbooks.add(cashbook);
+				x = x + cashbook.getTotal();
 				break;
 			}
 			else {
@@ -114,10 +117,9 @@ public class CashBookManager {
 //		String date1 = input.next();
 		System.out.println("# of registerd cash book date :"+ cashbooks.size());
 		for (int i= 0; i<cashbooks.size(); i++) {
-			cashbooks.get(i).printInfo();
-			
-			}	
-
+			cashbooks.get(i).printInfo();	
+			}
+		System.out.println("총합은" + x);
 	}
 }
 

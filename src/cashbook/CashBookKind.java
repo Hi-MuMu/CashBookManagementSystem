@@ -8,5 +8,4 @@ public enum CashBookKind {
 		April,
 		May,
 		June
-
 }

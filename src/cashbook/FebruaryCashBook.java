@@ -20,7 +20,7 @@ public class FebruaryCashBook extends CashBook {
 		this.setOut(out);
 		
 		int total = in - out;
-		System.out.println("총합은 : " + total);
+		System.out.println("수입 - 지출은 : " + total);
 		this.setTotal(total);		
 		
 	}
