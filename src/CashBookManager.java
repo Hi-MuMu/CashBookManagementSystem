@@ -1,38 +1,43 @@
 import java.util.Scanner;
 
 import cashbook.CashBook;
-import cashbook.FebruaryCashBook;
+import cashbook.CashBookKind;
+import cashbook.ClubCashBook;
+import cashbook.FamilyCashBook;
 
 import java.util.ArrayList;
 
 public class CashBookManager {
 	ArrayList<CashBook> cashbooks = new ArrayList<CashBook>();
-	int x = 0;
 	Scanner input;
 	CashBookManager(Scanner input) {
 		this.input = input;
-	}
-	
+	}	
 	public void addcashbook() {
 		int kind = 0;
 		CashBook cashbook;
 		while (kind != 1 && kind != 2){
-			System.out.println("1. for January");
-			System.out.println("2. for February");
-			System.out.println("Select num for Month kind between 1 and 2 :");
+			System.out.println("1. for Museong CashBook ");
+			System.out.println("2. for Club CashBook ");
+			System.out.println("3. for Family CashBook ");
+			System.out.println("Select num 1, 2, or 3 for CashBook kind: ");
 			kind = input.nextInt();
 			if (kind == 1) {
-				cashbook = new CashBook();
-				cashbook.getUserInput(input);
+				cashbook = new CashBook(CashBookKind.Museong);
+				cashbook.setUserInput(input);
 				cashbooks.add(cashbook);
-				x = x + cashbook.getTotal();
 				break;
 			}
 			else if (kind == 2) {
-				cashbook = new FebruaryCashBook();
-				cashbook.getUserInput(input);
+				cashbook = new ClubCashBook(CashBookKind.Club);
+				cashbook.setUserInput(input);
 				cashbooks.add(cashbook);
-				x = x + cashbook.getTotal();
+				break;
+			}
+			else if (kind == 3) {
+				cashbook = new FamilyCashBook(CashBookKind.Family);
+				cashbook.setUserInput(input);
+				cashbooks.add(cashbook);
 				break;
 			}
 			else {
@@ -74,7 +79,7 @@ public class CashBookManager {
 					System.out.println(" 1. Edit date");
 					System.out.println(" 2. Edit incomings");
 					System.out.println(" 3. Edit outgoings");
-					System.out.println(" 4. Edit total");
+					System.out.println(" 4. Edit Suminout");
 					System.out.println(" 5. Exit");
 					System.out.println("Select one number between 1 - 5 :");
 					num = input.nextInt();
@@ -85,23 +90,23 @@ public class CashBookManager {
 					}
 					else if (num == 2) {
 						int in = cashbook.getIn();
-						int total = cashbook.getTotal();
-						total = total - in;
+						int Suminout = cashbook.getSuminout();
+						Suminout = Suminout - in;
 						System.out.println("수입을 입력하세요 :");
 						in = input.nextInt();
 						cashbook.setIn(in);
-						total = total + in;
-						cashbook.setTotal(total);
+						Suminout = Suminout + in;
+						cashbook.setSuminout(Suminout);
 					}
 					else if (num == 3) {
 						int out = cashbook.getIn();
-						int total = cashbook.getTotal();
-						total = total + out;
+						int suminout = cashbook.getSuminout();
+						suminout = suminout + out;
 						System.out.println("지출을 입력하세요 :");
 						out = input.nextInt();
 						cashbook.setOut(out);
-						total = total - out;
-						cashbook.setTotal(total);
+						suminout = suminout - out;
+						cashbook.setSuminout(suminout);
 					}
 					else {
 						continue;
@@ -119,7 +124,8 @@ public class CashBookManager {
 		for (int i= 0; i<cashbooks.size(); i++) {
 			cashbooks.get(i).printInfo();	
 			}
-		System.out.println("총합은" + x);
+		
+		System.out.println("Museong 가계부의 총합은 : "+cashbooks.get(0).getTotal());
 	}
 }
 

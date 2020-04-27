@@ -1,11 +1,8 @@
 package cashbook;
 
-public enum CashBookKind {
-	
-		January,
-		February,
-		March,
-		April,
-		May,
-		June
+public enum CashBookKind {	
+		Museong,
+		Club,
+		Family,
+		Friends
 }

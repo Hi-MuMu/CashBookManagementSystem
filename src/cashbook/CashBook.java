@@ -3,11 +3,13 @@ package cashbook;
 import java.util.Scanner;
 
 public class CashBook {
-	protected CashBookKind kind = CashBookKind.January;
+	protected CashBookKind kind = CashBookKind.Museong;
 	protected String date;
 	protected int in;
 	protected int out;
-	protected int total;
+	protected int suminout;
+	static int total = 0;
+	static int total1 = 0;
 	
 	public CashBookKind getKind() {
 		return kind;
@@ -41,12 +43,16 @@ public class CashBook {
 		this.out = out;
 	}
 
-	public int getTotal() {
-		return total;
+	public int getSuminout() {
+		return suminout;
 	}
 
-	public void setTotal(int total) {
-		this.total = total;
+	public void setSuminout(int suminout) {
+		this.suminout = suminout;
+	}
+	
+	public int getTotal() {
+		return total;
 	}
 	
 	public CashBook() {
@@ -56,23 +62,44 @@ public class CashBook {
 		this.date = date;
 	}
 	
-	public CashBook(String date, int in, int out, int total) {
+	public CashBook(CashBookKind kind) {
+		this.kind = kind;
+	}
+	
+	public CashBook(String date, int in, int out, int suminout) {
 		this.date = date;
 		this.in = in;
 		this.out = out;
-		this.total = total;
+		this.suminout = suminout;
 	}
 	
+
 	public void printInfo() {
+		String skind = "none";
+		switch(this.kind) {
+		case Museong:
+			skind = "MS";
+			break;
+		case Club:
+			skind = "Club";
+			break;
+		case Family:
+			skind = "Family";
+			break;
+		case Friends:
+			skind = "Friends";
+			break;
+		default:
+		}
+		System.out.println("kind :" + skind);
 		System.out.println("날짜는 :" + date);
 		System.out.println("수입은 :" + in);
 		System.out.println("지출은 :" + out);
-		System.out.println("총합은 :" + total);
+		System.out.println("수입 - 지출은 :" + suminout);
 		System.out.println();
 	}
 	
-	public void getUserInput(Scanner input) {
-		System.out.println("이번달은 1월이고 31일 까지 있습니다.");
+	public void setUserInput(Scanner input) {
 		
 		System.out.println("날짜를 입력하세요 :");
 		String date = input.next();
@@ -86,9 +113,10 @@ public class CashBook {
 		int out = input.nextInt();
 		this.setOut(out);
 		
-		int total = in - out;
-		System.out.println("수입 - 지출은 : " + total);
-		this.setTotal(total);
+		int suminout = in - out;
+		System.out.println("수입 - 지출은 : " + suminout);
+		this.setSuminout(suminout);
+		
+		total = total + suminout;
 	}
 }
-	
