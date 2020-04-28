@@ -16,7 +16,7 @@ public class CashBookManager {
 	public void addcashbook() {
 		int kind = 0;
 		CashBook cashbook;
-		while (kind != 1 && kind != 2){
+		while (kind != 1 && kind != 2 && kind != 3){
 			System.out.println("1. for Museong CashBook ");
 			System.out.println("2. for Club CashBook ");
 			System.out.println("3. for Family CashBook ");
@@ -41,7 +41,7 @@ public class CashBookManager {
 				break;
 			}
 			else {
-				System.out.println("Select num for Month kind between 1 and 2 :");
+				System.out.println("Select num 1, 2, or 3 for CashBook kind: ");
 			}
 		}
 	}
@@ -117,9 +117,23 @@ public class CashBookManager {
 		}	
 	}
 	
-	public void viewcashbooks() {
-//		System.out.println("날짜를 입력하세요 : ");
-//		String date1 = input.next();
+	public void serchcashbook() {
+		System.out.println("날짜를 입력하세요 : ");
+		String date1 = input.next();
+		for (int i= 0; i<cashbooks.size(); i++) {
+			CashBook cashbook = cashbooks.get(i);
+			if(date1.equals(cashbook.getDate())) {
+				cashbooks.get(i).printInfo();
+				break;
+			}
+			else if (i == cashbooks.size() -1) {
+				System.out.println("찾으시는 날짜의 정보가 없습니다.");
+			}
+		}
+	}
+	
+	public void allprintInfocashbooks() {
+
 		System.out.println("# of registerd cash book date :"+ cashbooks.size());
 		for (int i= 0; i<cashbooks.size(); i++) {
 			cashbooks.get(i).printInfo();	

@@ -7,14 +7,15 @@ public class MuneManager {
 		CashBookManager cashBookManager = new CashBookManager(input);
 	
 		int num = 4;
-		while (num != 5) {
+		while (num != 6) {
 			System.out.println("*** Cash Book Management System Menu ***");
 			System.out.println(" 1. Add Cash Book");
 			System.out.println(" 2. Delete Cash Book");
 			System.out.println(" 3. Edit Cash Book");
-			System.out.println(" 4. View Cash Books");
-			System.out.println(" 5. Exit");
-			System.out.println("Select one number between 1 - 5 :");
+			System.out.println(" 4. Serch Cash Book");
+			System.out.println(" 5. All PrintInfo Cash Books");
+			System.out.println(" 6. Exit");
+			System.out.println("Select one number between 1 - 6 :");
 			num = input.nextInt();
 			if (num==1) {
 				cashBookManager.addcashbook();
@@ -26,7 +27,10 @@ public class MuneManager {
 				cashBookManager.editcashbook();
 			}
 			else if (num==4) {
-				cashBookManager.viewcashbooks();
+				cashBookManager.serchcashbook();
+			}
+			else if (num==5) {
+				cashBookManager.allprintInfocashbooks();
 			}
 			else {
 				continue;

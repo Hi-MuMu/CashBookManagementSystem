@@ -6,6 +6,14 @@ public class FamilyCashBook extends CashBook {
 	protected int parentin;
 	protected int sumin;
 	
+	public int Sum(int in, int parentin) {
+		return in + parentin;
+	}
+	
+	public int Sum(int in, int parentin, int out) {
+		return in+parentin-out;
+	}
+	
 	public void setParentin(int parentin) {
 		this.parentin = parentin;
 	}
