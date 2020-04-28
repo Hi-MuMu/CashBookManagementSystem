@@ -6,14 +6,6 @@ public class FamilyCashBook extends CashBook {
 	protected int parentin;
 	protected int sumin;
 	
-	public int Sum(int in, int parentin) {
-		return in + parentin;
-	}
-	
-	public int Sum(int in, int parentin, int out) {
-		return in+parentin-out;
-	}
-	
 	public void setParentin(int parentin) {
 		this.parentin = parentin;
 	}
@@ -35,15 +27,10 @@ public class FamilyCashBook extends CashBook {
 	}
 	
 	public void setUserInput(Scanner input) {
-
-		
-		
 		System.out.println("가족 가계부입니다.");
-
 		System.out.println("날짜를 입력하세요 :");
 		String date = input.next();
 		this.setDate(date);
-
 		char answer = 'x';
 		while (answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N') {
 			System.out.println("당신의 수입이 있나요 ? (Y/N)");
