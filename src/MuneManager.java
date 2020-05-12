@@ -1,40 +1,40 @@
 import java.util.Scanner;
 
 public class MuneManager {
-
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		CashBookManager cashBookManager = new CashBookManager(input);
 	
 		int num = 4;
-		while (num != 6) {
-			System.out.println("*** Cash Book Management System Menu ***");
-			System.out.println(" 1. Add Cash Book");
-			System.out.println(" 2. Delete Cash Book");
-			System.out.println(" 3. Edit Cash Book");
-			System.out.println(" 4. Serch Cash Book");
-			System.out.println(" 5. All PrintInfo Cash Books");
-			System.out.println(" 6. Exit");
-			System.out.println("Select one number between 1 - 6 :");
+		while (num != 5) {
+			showMenu();
 			num = input.nextInt();
-			if (num==1) {
+			switch (num) {
+			case 1:
 				cashBookManager.addcashbook();
-			}
-			else if (num==2) {
+				break;
+			case 2:
 				cashBookManager.deletecashbook();
-			}
-			else if (num==3) {
+				break;
+			case 3:
 				cashBookManager.editcashbook();
-			}
-			else if (num==4) {
-				cashBookManager.serchcashbook();
-			}
-			else if (num==5) {
-				cashBookManager.allprintInfocashbooks();
-			}
-			else {
+				break;
+			case 4:
+				cashBookManager.viewCashBooks();
+				break;
+			default :
 				continue;
-			}
+			}	
 		}
+	}
+	
+	public static void showMenu() {
+		System.out.println("*** Cash Book Management System Menu ***");
+		System.out.println(" 1. Add Cash Book");
+		System.out.println(" 2. Delete Cash Book");
+		System.out.println(" 3. Edit Cash Book");
+		System.out.println(" 4. View Cash Book");
+		System.out.println(" 5. Exit");
+		System.out.println("Select one number between 1 - 5 :");
 	}
 }

@@ -2,20 +2,26 @@ package cashbook;
 
 import java.util.Scanner;
 
-public class ClubCashBook extends GroupCashBook {
+public abstract class GroupCashBook extends CashBook {
 	
-	public ClubCashBook(CashBookKind kind) {
+	public GroupCashBook(CashBookKind kind) {
 		super(kind);
 	}
-	
-	public void setUserInput(Scanner input) {
 
-		System.out.println("동아리 가계부입니다.");
-		setCashBookDate(input);
-		setCashBookInwithYN(input);
-		setCashBookOut(input);
-		setCashBookSum(input);
+	@Override
+	public abstract void setUserInput(Scanner input);
+		
+	@Override
+	public void printInfo() {
+		String skind = getKindString();
+		System.out.println("kind :" + skind);
+		System.out.println("날짜는 :" + date);
+		System.out.println("수입은 :" + in);
+		System.out.println("지출은 :" + out);
+		System.out.println("수입 - 지출은 :" + suminout);
+		System.out.println();
 	}
+	
 	public void setCashBookInwithYN(Scanner input) {
 		char answer = 'x';
 		while (answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N') {
@@ -34,6 +40,6 @@ public class ClubCashBook extends GroupCashBook {
 			else {
 			}
 		}
-	}		
-	
+	}	
+
 }

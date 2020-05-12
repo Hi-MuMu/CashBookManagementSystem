@@ -2,14 +2,13 @@ package cashbook;
 
 import java.util.Scanner;
 
-public class CashBook {
+public abstract class CashBook implements CashBookInput {
 	protected CashBookKind kind = CashBookKind.Museong;
 	protected String date;
 	protected int in;
 	protected int out;
 	protected int suminout;
 	static int total = 0;
-	static int total1 = 0;
 	
 	public CashBookKind getKind() {
 		return kind;
@@ -73,8 +72,37 @@ public class CashBook {
 		this.suminout = suminout;
 	}
 	
-
-	public void printInfo() {
+	public abstract void printInfo(); 
+	
+	public void setCashBookDate(Scanner input) {
+		System.out.println("날짜를 입력하세요 :");
+		String date = input.next();
+		this.setDate(date);
+	}
+	
+	public void setCashBookIn(Scanner input) {
+		int in = this.getIn();
+		int Suminout = this.getSuminout();
+		Suminout = Suminout - in;
+		System.out.println("수입을 입력하세요 :");
+		in = input.nextInt();
+		this.setIn(in);
+		Suminout = Suminout + in;
+		this.setSuminout(Suminout);
+	}
+	
+	public void setCashBookOut(Scanner input) {
+		int out = this.getOut();
+		int suminout = this.getSuminout();
+		suminout = suminout + out;
+		System.out.println("지출을 입력하세요 :");
+		out = input.nextInt();
+		this.setOut(out);
+		suminout = suminout - out;
+		this.setSuminout(suminout);
+	}
+	
+	public String getKindString() {
 		String skind = "none";
 		switch(this.kind) {
 		case Museong:
@@ -91,32 +119,13 @@ public class CashBook {
 			break;
 		default:
 		}
-		System.out.println("kind :" + skind);
-		System.out.println("날짜는 :" + date);
-		System.out.println("수입은 :" + in);
-		System.out.println("지출은 :" + out);
-		System.out.println("수입 - 지출은 :" + suminout);
-		System.out.println();
+		return skind;
 	}
 	
-	public void setUserInput(Scanner input) {
-		
-		System.out.println("날짜를 입력하세요 :");
-		String date = input.next();
-		this.setDate(date);
-		
-		System.out.println("수입을 입력하세요 :");
-		int in = input.nextInt();
-		this.setIn(in);
-		
-		System.out.println("지출을 입력하세요 :");
-		int out = input.nextInt();
-		this.setOut(out);
-		
+	public void setCashBookSum(Scanner input) {
 		int suminout = in - out;
 		System.out.println("수입 - 지출은 : " + suminout);
 		this.setSuminout(suminout);
-		
-		total = total + suminout;
 	}
+		
 }

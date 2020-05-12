@@ -2,7 +2,7 @@ package cashbook;
 
 import java.util.Scanner;
 
-public class FamilyCashBook extends CashBook {
+public class FamilyCashBook extends GroupCashBook {
 	protected int parentin;
 	protected int sumin;
 	
@@ -28,29 +28,17 @@ public class FamilyCashBook extends CashBook {
 	
 	public void setUserInput(Scanner input) {
 		System.out.println("가족 가계부입니다.");
-		System.out.println("날짜를 입력하세요 :");
-		String date = input.next();
-		this.setDate(date);
-		char answer = 'x';
-		while (answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N') {
-			System.out.println("당신의 수입이 있나요 ? (Y/N)");
-			answer = input.next().charAt(0);
-			if(answer == 'y' || answer == 'Y'){
-				System.out.println("당신의 수입을 입력하세요 : ");
-				int in = input.nextInt();
-				this.setIn(in);
-				break;
-			}
-			else if (answer == 'n' || answer == 'N') {
-				System.out.println("수입이 없습니다.");
-				this.setIn(0);
-				break;
-			}
-			else {
-			}
-		}
 		
-		answer = 'x';
+		setCashBookDate(input);
+		
+		setCashBookInwithYN(input);
+		setParentInwithYN(input);
+		setCashBookOut(input);
+		int suminout = sumin + in - out;		
+		this.setSuminout(suminout);
+	}
+	public void setParentInwithYN(Scanner input) {
+		char answer = 'x';
 		while (answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N') {
 			System.out.println("부모님의 수입이 있나요 ? (Y/N)");
 			answer = input.next().charAt(0);
@@ -68,34 +56,10 @@ public class FamilyCashBook extends CashBook {
 			else {
 			}
 		}
-		int sumin = in + parentin;
-		this.setSumin(sumin);
-		
-		System.out.println("지출을 입력하세요 :");
-		int out = input.nextInt();
-		this.setOut(out);
-
-		int suminout = sumin - out;		
-		this.setSuminout(suminout);
-
 	}
+	
 	public void printInfo() {
-		String skind = "none";
-		switch(this.kind) {
-		case Museong:
-			skind = "MS";
-			break;
-		case Club:
-			skind = "Club";
-			break;
-		case Family:
-			skind = "Family";
-			break;
-		case Friends:
-			skind = "Friends";
-			break;
-		default:
-		}
+		String skind = getKindString();
 		System.out.println("kind :" + skind);
 		System.out.println("날짜는 :" + date);
 		System.out.println("부모님의 수입은 :" + parentin);
