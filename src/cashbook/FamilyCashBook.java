@@ -34,7 +34,7 @@ public class FamilyCashBook extends GroupCashBook {
 		setCashBookInwithYN(input);
 		setParentInwithYN(input);
 		setCashBookOut(input);
-		int suminout = sumin + in - out;		
+		int suminout = getParentin() + in - out;		
 		this.setSuminout(suminout);
 	}
 	public void setParentInwithYN(Scanner input) {
