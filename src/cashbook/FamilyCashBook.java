@@ -64,7 +64,7 @@ public class FamilyCashBook extends GroupCashBook {
 		System.out.println("날짜는 :" + date);
 		System.out.println("부모님의 수입은 :" + parentin);
 		System.out.println("나의 수입은 :" + in);
-		System.out.println("총 수입은 :" + sumin);
+		System.out.println("총 수입은 :" + (suminout + out));
 		System.out.println("지출은 :" + out);
 		System.out.println("수입 - 지출은 :" + suminout);
 		System.out.println();

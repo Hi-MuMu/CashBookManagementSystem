@@ -28,7 +28,6 @@ public abstract class GroupCashBook extends CashBook {
 			System.out.println("수입이 있나요 ? (Y/N)");
 			answer = input.next().charAt(0);
 			if(answer == 'y' || answer == 'Y'){
-				System.out.print("수입을 입력하세요 : ");
 				setCashBookIn(input);
 				break;
 			}
