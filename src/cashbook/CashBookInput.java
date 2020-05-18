@@ -2,6 +2,8 @@ package cashbook;
 
 import java.util.Scanner;
 
+import exception.DateFormatException;
+
 public interface CashBookInput {
 	
 	public String getDate();
@@ -20,7 +22,7 @@ public interface CashBookInput {
 	
 	public void setSuminout(int suminout);
 	
-	public void setDate(String date);
+	public void setDate(String date) throws DateFormatException;
 	
 	public void setUserInput(Scanner input);
 	

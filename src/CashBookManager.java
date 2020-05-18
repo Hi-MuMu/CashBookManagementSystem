@@ -8,6 +8,7 @@ import cashbook.FamilyCashBook;
 import cashbook.MuseongCashBook;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 
 public class CashBookManager {
 	ArrayList<CashBookInput> cashbooks = new ArrayList<CashBookInput>();
@@ -19,35 +20,44 @@ public class CashBookManager {
 		int kind = 0;
 		CashBookInput cashbookInput;
 		while (kind != 1 && kind != 2 && kind != 3){
-			System.out.println("1. for Museong CashBook ");
-			System.out.println("2. for Club CashBook ");
-			System.out.println("3. for Family CashBook ");
-			System.out.println("Select num 1, 2, or 3 for CashBook kind: ");
-			kind = input.nextInt();
-			if (kind == 1) {
-				cashbookInput = new MuseongCashBook(CashBookKind.Museong);
-				cashbookInput.setUserInput(input);
-				cashbooks.add(cashbookInput);
-				break;
-			}
-			else if (kind == 2) {
-				cashbookInput = new ClubCashBook(CashBookKind.Club);
-				cashbookInput.setUserInput(input);
-				cashbooks.add(cashbookInput);
-				break;
-			}
-			else if (kind == 3) {
-				cashbookInput = new FamilyCashBook(CashBookKind.Family);
-				cashbookInput.setUserInput(input);
-				cashbooks.add(cashbookInput);
-				break;
-			}
-			else {
+			try {
+				System.out.println("1. for Museong CashBook ");
+				System.out.println("2. for Club CashBook ");
+				System.out.println("3. for Family CashBook ");
 				System.out.println("Select num 1, 2, or 3 for CashBook kind: ");
+				kind = input.nextInt();
+				if (kind == 1) {
+					cashbookInput = new MuseongCashBook(CashBookKind.Museong);
+					cashbookInput.setUserInput(input);
+					cashbooks.add(cashbookInput);
+					break;
+				}
+				else if (kind == 2) {
+					cashbookInput = new ClubCashBook(CashBookKind.Club);
+					cashbookInput.setUserInput(input);
+					cashbooks.add(cashbookInput);
+					break;
+				}
+				else if (kind == 3) {
+					cashbookInput = new FamilyCashBook(CashBookKind.Family);
+					cashbookInput.setUserInput(input);
+					cashbooks.add(cashbookInput);
+					break;
+				}
+				else {
+					System.out.println("Select num 1, 2, or 3 for CashBook kind: ");
+				}
+			}
+			catch(InputMismatchException e) {
+				System.out.println("Please put an integer betwwen 1 and 3!");
+				if(input.hasNext()) {
+					input.next();
+				}
+				kind = -1;
 			}
 		}
 	}
-		
+
 
 	public void deletecashbook() {
 		System.out.println("날짜를 입력하세요 : ");
@@ -55,7 +65,7 @@ public class CashBookManager {
 		int index = findIndex(cashbookDate);
 		remvefromCashBooks(index, cashbookDate);
 	}
-	
+
 	public int findIndex(String cashbookDate) {
 		int index = -1 ;
 		for (int i= 0; i<cashbooks.size(); i++) {
@@ -66,7 +76,7 @@ public class CashBookManager {
 		}
 		return index;
 	}
-	
+
 	public int remvefromCashBooks(int index, String cashbookDate) {
 		if (index >= 0) {
 			cashbooks.remove(index);
@@ -78,7 +88,7 @@ public class CashBookManager {
 			return -1;
 		}	
 	}
-	
+
 	public void editcashbook() {
 		System.out.println("날짜를 입력하세요 : ");
 		String date1 = input.next();
@@ -107,16 +117,16 @@ public class CashBookManager {
 			} // if
 		} // for	
 	}
-		
+
 	public void viewCashBooks() {
 		System.out.println("# of registerd cash book date :"+ cashbooks.size());
 		for (int i= 0; i<cashbooks.size(); i++) {
 			cashbooks.get(i).printInfo();	
-			}
-		
+		}
+
 		System.out.println("Museong 가계부의 총합은 : "+cashbooks.get(0).getTotal());
 	}
-	
+
 	public void showEditMenu() {
 		System.out.println("** Cash Book Info Edit Menu **");
 		System.out.println(" 1. Edit date");
@@ -125,5 +135,5 @@ public class CashBookManager {
 		System.out.println(" 4. Exit");
 		System.out.println("Select one number between 1 - 4 :");
 	}
-	
+
 }

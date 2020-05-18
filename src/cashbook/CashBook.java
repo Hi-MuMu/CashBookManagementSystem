@@ -2,6 +2,8 @@ package cashbook;
 
 import java.util.Scanner;
 
+import exception.DateFormatException;
+
 public abstract class CashBook implements CashBookInput {
 	protected CashBookKind kind = CashBookKind.Museong;
 	protected String date;
@@ -9,7 +11,7 @@ public abstract class CashBook implements CashBookInput {
 	protected int out;
 	protected int suminout;
 	static int total = 0;
-	
+
 	public CashBookKind getKind() {
 		return kind;
 	}
@@ -22,7 +24,11 @@ public abstract class CashBook implements CashBookInput {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(String date) throws DateFormatException {
+		if (!date.contains("/")) {
+			throw new DateFormatException();
+		}
+
 		this.date = date;
 	}
 
@@ -49,37 +55,45 @@ public abstract class CashBook implements CashBookInput {
 	public void setSuminout(int suminout) {
 		this.suminout = suminout;
 	}
-	
+
 	public int getTotal() {
 		return total;
 	}
-	
+
 	public CashBook() {
 	}
-	
+
 	public CashBook(String date) {
 		this.date = date;
 	}
-	
+
 	public CashBook(CashBookKind kind) {
 		this.kind = kind;
 	}
-	
+
 	public CashBook(String date, int in, int out, int suminout) {
 		this.date = date;
 		this.in = in;
 		this.out = out;
 		this.suminout = suminout;
 	}
-	
+
 	public abstract void printInfo(); 
-	
+
 	public void setCashBookDate(Scanner input) {
-		System.out.println("날짜를 입력하세요 :");
-		String date = input.next();
-		this.setDate(date);
+		String date = "";
+		while (!date.contains("/")) {
+			System.out.println("날짜를 입력하세요 :");
+			date = input.next();
+			try {
+				this.setDate(date);
+			} 
+			catch (DateFormatException e) {
+				System.out.println("Incorrect Date Fortmat. put the data that contains / ");
+			}
+		}
 	}
-	
+
 	public void setCashBookIn(Scanner input) {
 		int in = this.getIn();
 		int Suminout = this.getSuminout();
@@ -90,7 +104,7 @@ public abstract class CashBook implements CashBookInput {
 		Suminout = Suminout + in;
 		this.setSuminout(Suminout);
 	}
-	
+
 	public void setCashBookOut(Scanner input) {
 		int out = this.getOut();
 		int suminout = this.getSuminout();
@@ -101,7 +115,7 @@ public abstract class CashBook implements CashBookInput {
 		suminout = suminout - out;
 		this.setSuminout(suminout);
 	}
-	
+
 	public String getKindString() {
 		String skind = "none";
 		switch(this.kind) {
@@ -121,11 +135,11 @@ public abstract class CashBook implements CashBookInput {
 		}
 		return skind;
 	}
-	
+
 	public void setCashBookSum(Scanner input) {
 		int suminout = in - out;
 		System.out.println("수입 - 지출은 : " + suminout);
 		this.setSuminout(suminout);
 	}
-		
+
 }
