@@ -1,10 +1,16 @@
 package cashbook;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import exception.DateFormatException;
 
-public abstract class CashBook implements CashBookInput {
+public abstract class CashBook implements CashBookInput, Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4805264194804674734L;
+	
 	protected CashBookKind kind = CashBookKind.Museong;
 	protected String date;
 	protected int in;

@@ -1,21 +1,31 @@
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import cashbook.CashBook;
-import cashbook.CashBookKind;
 import cashbook.CashBookInput;
+import cashbook.CashBookKind;
 import cashbook.ClubCashBook;
 import cashbook.FamilyCashBook;
 import cashbook.MuseongCashBook;
 
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-
-public class CashBookManager {
+public class CashBookManager implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7313458216165738267L;
+	
 	ArrayList<CashBookInput> cashbooks = new ArrayList<CashBookInput>();
-	Scanner input;
+	transient Scanner input;
 	CashBookManager(Scanner input) {
 		this.input = input;
 	}	
+	
+	public void setScanner(Scanner input) {
+		this.input = input;
+	}
+	
+	
 	public void addcashbook() {
 		int kind = 0;
 		CashBookInput cashbookInput;
