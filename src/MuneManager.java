@@ -10,10 +10,10 @@ import log.EventLogger;
 
 public class MuneManager {
 	static EventLogger logger = new EventLogger("log.txt");
-	
+
 	public static void main(String[] args) {
-		
-		
+
+
 		Scanner input = new Scanner(System.in);
 		CashBookManager cashBookManager = getObject("cashbookmanager.ser");
 		if(cashBookManager == null) {
@@ -23,7 +23,7 @@ public class MuneManager {
 			cashBookManager.setScanner(input);
 		}
 		// new CashBookManager(input);
-		
+
 		selectMenu(input, cashBookManager);
 		putObject(cashBookManager, "cashbookmanager.ser");
 
@@ -76,19 +76,19 @@ public class MuneManager {
 		System.out.println(" 5. Exit");
 		System.out.println("Select one number between 1 - 5 :");
 	}
-	
+
 	public static CashBookManager getObject(String filename) {
 		CashBookManager cashBookManager = null;
-		
+
 		try {
 			FileInputStream file = new FileInputStream(filename);
 			ObjectInputStream in = new ObjectInputStream(file);
-			
+
 			cashBookManager = (CashBookManager) in.readObject();
-			
+
 			in.close();
 			file.close();
-			
+
 		} catch (FileNotFoundException e) {
 			return cashBookManager;
 		} catch (IOException e) {
@@ -98,7 +98,7 @@ public class MuneManager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return cashBookManager;
 	}
 	public static void putObject(CashBookManager cashBookManager, String filename) {
@@ -107,12 +107,12 @@ public class MuneManager {
 		try {
 			FileOutputStream file = new FileOutputStream(filename);
 			ObjectOutputStream out = new ObjectOutputStream(file);
-			
+
 			out.writeObject(cashBookManager);
-			
+
 			out.close();
 			file.close();
-			
+
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

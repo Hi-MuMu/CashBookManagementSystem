@@ -14,18 +14,18 @@ public class CashBookManager implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -7313458216165738267L;
-	
+
 	ArrayList<CashBookInput> cashbooks = new ArrayList<CashBookInput>();
 	transient Scanner input;
 	CashBookManager(Scanner input) {
 		this.input = input;
 	}	
-	
+
 	public void setScanner(Scanner input) {
 		this.input = input;
 	}
-	
-	
+
+
 	public void addcashbook() {
 		int kind = 0;
 		CashBookInput cashbookInput;
