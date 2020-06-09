@@ -1,2 +1,2 @@
-5월 25, 2020 4:11:59 오후 log.EventLogger log
-정보: view a cashbook
+6월 09, 2020 10:48:37 오전 log.EventLogger log
+정보: add a cashbook
