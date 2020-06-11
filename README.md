@@ -1,2 +1,0 @@
-# CashBookManagementSystem
-oop at gnu

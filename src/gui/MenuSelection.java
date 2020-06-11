@@ -12,7 +12,6 @@ import listeners.ButtonViewListener;
 
 public class MenuSelection extends JPanel {
 	
-	
 	WindowFrame frame;
 	
 	public MenuSelection(WindowFrame frame) {
@@ -42,7 +41,5 @@ public class MenuSelection extends JPanel {
 
 		this.add(panel1, BorderLayout.NORTH);
 		this.add(panel2, BorderLayout.CENTER);
-
 	}
-
 }

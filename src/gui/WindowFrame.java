@@ -2,25 +2,24 @@ package gui;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import manager.CashBookManager;
 
 public class WindowFrame extends JFrame {
-	
-	MenuSelection menuslection;
 
+	CashBookManager cashBookManager;
+	MenuSelection menuslection;
 	CashBookAdder cashbookadder;
 	CashBookViewer cashbookviewer;
-	
 
-	public WindowFrame() {
-		
-		this.menuslection = new MenuSelection(this);
-		this.cashbookadder = new CashBookAdder(this);
-		this.cashbookviewer = new CashBookViewer(this);
-		
-		
-		
+	public WindowFrame(CashBookManager cashBookManager) {
 		this.setSize(500,300);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setTitle("My Frame");
+		
+		this.cashBookManager = cashBookManager;
+		this.menuslection = new MenuSelection(this);
+		this.cashbookadder = new CashBookAdder(this);
+		this.cashbookviewer = new CashBookViewer(this, this.cashBookManager);
 		
 		
 		this.setupPanel(menuslection);
@@ -58,6 +57,4 @@ public class WindowFrame extends JFrame {
 	public void setCashbookviewer(CashBookViewer cashbookviewer) {
 		this.cashbookviewer = cashbookviewer;
 	}
-
-
 }

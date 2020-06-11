@@ -16,11 +16,9 @@ public class ButtonViewListener implements ActionListener {
 		this.frame = frame;
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		JButton b = (JButton) e.getSource();
 		CashBookViewer viewer = frame.getCashbookviewer();
 		frame.setupPanel(viewer);
 	}
-
 }

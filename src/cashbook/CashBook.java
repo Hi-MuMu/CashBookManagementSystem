@@ -16,7 +16,7 @@ public abstract class CashBook implements CashBookInput, Serializable {
 	protected int in;
 	protected int out;
 	protected int suminout;
-	static int total = 0;
+	public static int total;
 
 	public CashBookKind getKind() {
 		return kind;
@@ -64,8 +64,8 @@ public abstract class CashBook implements CashBookInput, Serializable {
 
 	public int getTotal() {
 		return total;
-	}
-
+	}	
+	
 	public CashBook() {
 	}
 
@@ -147,5 +147,7 @@ public abstract class CashBook implements CashBookInput, Serializable {
 		System.out.println("수입 - 지출은 : " + suminout);
 		this.setSuminout(suminout);
 	}
+	
+
 
 }

@@ -39,13 +39,10 @@ public class CashBookAdder extends JPanel {
 		panel.add(new JButton("Cancel"));
 
 		SpringUtilities.makeCompactGrid(panel, 4, 2, 6, 6, 6, 6);
-
 		
 		this.add(panel);
 		
-
 	}
-
 }
 //JLabel lableDate = new JLabel("Date: ", JLabel.TRAILING);
 //JTextField fieldDate = new JTextField(10);

@@ -1,8 +1,10 @@
+package manager;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import cashbook.CashBook;
 import cashbook.CashBookInput;
 import cashbook.CashBookKind;
 import cashbook.ClubCashBook;
@@ -134,7 +136,15 @@ public class CashBookManager implements Serializable {
 			cashbooks.get(i).printInfo();	
 		}
 
-		System.out.println("Museong 가계부의 총합은 : "+cashbooks.get(0).getTotal());
+//		System.out.println("Museong 가계부의 총합은 : "+cashbooks.get(0).getTotal());
+	}
+	
+	public int size() {
+		return cashbooks.size();
+	}
+	
+	public CashBookInput get(int index) {
+		return (CashBook) cashbooks.get(index);
 	}
 
 	public void showEditMenu() {

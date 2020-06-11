@@ -19,6 +19,7 @@ public class MuseongCashBook extends CashBook {
 		setCashBookSum(input);
 		
 		total = total + suminout;
+
 	}
 	
 	public void printInfo() {
@@ -28,6 +29,7 @@ public class MuseongCashBook extends CashBook {
 		System.out.println("수입은 :" + in);
 		System.out.println("지출은 :" + out);
 		System.out.println("수입 - 지출은 :" + suminout);
+		System.out.println("총합은 :" + total);
 		System.out.println();
 	}
 	

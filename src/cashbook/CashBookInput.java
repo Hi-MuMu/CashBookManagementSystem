@@ -9,7 +9,7 @@ public interface CashBookInput {
 	public String getDate();
 	
 	public int getTotal();
-	
+		
 	public int getOut();
 	
 	public int getIn();

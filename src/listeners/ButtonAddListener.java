@@ -12,16 +12,14 @@ import gui.WindowFrame;
 public class ButtonAddListener implements ActionListener {
 	
 	WindowFrame frame;
-
+	
 	public ButtonAddListener(WindowFrame frame) {
 		this.frame = frame;
 	}
 
-	@Override
 	public void actionPerformed(ActionEvent e) {
 		JButton b = (JButton) e.getSource();
 		CashBookAdder adder = frame.getCashbookadder();
 		frame.setupPanel(adder);
 	}
-
 }
