@@ -7,6 +7,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
+import listeners.CashBookAdderListener;
+
 public class CashBookAdder extends JPanel {
 	
 	WindowFrame frame;
@@ -32,11 +34,17 @@ public class CashBookAdder extends JPanel {
 		JLabel lableOut = new JLabel("¡ˆ√‚: ", JLabel.TRAILING);
 		JTextField fieldOut = new JTextField(10);
 		lableDate.setLabelFor(fieldOut);
+		
+		JButton saveButton = new JButton("Save");
+		saveButton.addActionListener(new CashBookAdderListener(fieldDate, fieldIn, fieldOut));
+		JButton cancleButton = new JButton("Cancel");
+		
 		panel.add(lableOut);
 		panel.add(fieldOut);
-
-		panel.add(new JButton("Save"));
-		panel.add(new JButton("Cancel"));
+		
+		
+		panel.add(saveButton);
+		panel.add(cancleButton);
 
 		SpringUtilities.makeCompactGrid(panel, 4, 2, 6, 6, 6, 6);
 		

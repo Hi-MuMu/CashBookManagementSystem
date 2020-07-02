@@ -43,7 +43,6 @@ public class CashBookViewer extends JPanel {
 
 		JTable table = new JTable(model);
 		JScrollPane sp = new JScrollPane(table);
-		
 
 		this.add(sp);
 	}
