@@ -8,13 +8,17 @@ import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
 import listeners.CashBookAdderListener;
+import manager.CashBookManager;
 
 public class CashBookAdder extends JPanel {
 	
 	WindowFrame frame;
 	
-	public CashBookAdder(WindowFrame frame) {
+	CashBookManager cashBookManager;
+	
+	public CashBookAdder(WindowFrame frame, CashBookManager cashBookManager) {
 		this.frame = frame;
+		this.cashBookManager = cashBookManager;
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(new SpringLayout());
@@ -36,7 +40,7 @@ public class CashBookAdder extends JPanel {
 		lableDate.setLabelFor(fieldOut);
 		
 		JButton saveButton = new JButton("Save");
-		saveButton.addActionListener(new CashBookAdderListener(fieldDate, fieldIn, fieldOut));
+		saveButton.addActionListener(new CashBookAdderListener(fieldDate, fieldIn, fieldOut, cashBookManager));
 		JButton cancleButton = new JButton("Cancel");
 		
 		panel.add(lableOut);

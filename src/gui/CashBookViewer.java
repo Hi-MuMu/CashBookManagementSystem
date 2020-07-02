@@ -15,7 +15,10 @@ import manager.CashBookManager;
 public class CashBookViewer extends JPanel {
 	
 	WindowFrame frame;
+	
 	CashBookManager cashBookManager;
+	
+	
 
 	public CashBookViewer(WindowFrame frame, CashBookManager cashBookManager) {
 		this.frame = frame;

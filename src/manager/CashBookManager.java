@@ -26,7 +26,12 @@ public class CashBookManager implements Serializable {
 	public void setScanner(Scanner input) {
 		this.input = input;
 	}
-
+	
+	public void addcashbook(String date, String In, String Out) {
+		CashBookInput cashbookInput = new MuseongCashBook(CashBookKind.Museong);
+		cashbookInput.setUserInput(input);
+		cashbooks.add(cashbookInput);
+	}
 
 	public void addcashbook() {
 		int kind = 0;

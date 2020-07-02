@@ -18,7 +18,7 @@ public class WindowFrame extends JFrame {
 		
 		this.cashBookManager = cashBookManager;
 		this.menuslection = new MenuSelection(this);
-		this.cashbookadder = new CashBookAdder(this);
+		this.cashbookadder = new CashBookAdder(this, this.cashBookManager);
 		this.cashbookviewer = new CashBookViewer(this, this.cashBookManager);
 		
 		
